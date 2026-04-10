@@ -1,4 +1,4 @@
-def get_branch(debt, debtor):
+def get_branch(debt: int, debtor: int) -> str:
     if debtor == 1:
         if debt <= 500000:
             return 'one_debtor_order'
