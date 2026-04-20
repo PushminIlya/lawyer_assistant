@@ -376,16 +376,16 @@ def input_exact_shared_amounts(total_debt: int, debtor_count: int) -> list[int]:
     while True:
         debtor_amounts = []
 
-        print('Введите сумму задолженности по каждому должнику:')
+        print('Введите сумму требования по каждому должнику в рублях:')
 
         for index in range(1, debtor_count + 1):
             amount = input_positive_number(
-                f'Должник № {index}, сумма задолженности: '
+                f'Должник № {index}, сумма требования: '
             )
             debtor_amounts.append(amount)
 
         if sum(debtor_amounts) != total_debt:
-            print('Ошибка ввода. Сумма по должникам не равна общей сумме задолженности.')
+            print('Ошибка ввода. Сумма по должникам не равна общей сумме требования.')
             print('Повторите ввод сумм ещё раз.')
             continue
 
@@ -395,7 +395,7 @@ def input_exact_shared_amounts(total_debt: int, debtor_count: int) -> list[int]:
 # Собирает все данные по долевой ответственности.
 def input_shared_debt_data(debtor_count: int) -> dict:
     total_debt = input_positive_number(
-        'Введите общую сумму задолженности по всем должникам: '
+        'Введите общую сумму требования по всем должникам в рублях: '
     )
 
     input_mode = input_menu_choice(
@@ -769,7 +769,7 @@ def handle_solidary_debtors(
     debtor_count: int
 ) -> None:
     total_debt = input_positive_number(
-        'Введите общую сумму задолженности по всем должникам: '
+        'Введите общую сумму требования по всем должникам в рублях: '
     )
 
     branch = get_branch(
@@ -918,7 +918,7 @@ def handle_shared_debtors(
 
 # Отдельный сценарий для одного должника.
 def handle_single_debtor(type_of_energy_resource: str) -> None:
-    debt = input_positive_number('Введите сумму задолженности: ')
+    debt = input_positive_number('Введите сумму требования в рублях: ')
     branch = get_branch(debt=debt, debtor_count=1)
 
     address_data, jurisdiction = input_address(branch)
