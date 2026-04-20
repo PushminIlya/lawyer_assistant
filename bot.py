@@ -651,7 +651,7 @@ async def ask_next_exact_amount(update: Update, context: ContextTypes.DEFAULT_TY
     context.user_data['mode'] = 'waiting_shared_exact_amount'
 
     await update.message.reply_text(
-        f'Введите сумму задолженности для должника № {amount_index} из {debtor_count}.',
+        f'Введите сумму требования в рублях для должника № {amount_index} из {debtor_count}.',
         reply_markup=CANCEL_KEYBOARD,
     )
 
@@ -744,7 +744,7 @@ async def handle_liability_type(update: Update, context: ContextTypes.DEFAULT_TY
         context.user_data['mode'] = 'waiting_solidary_total_debt'
 
         await update.message.reply_text(
-            'Введите общую сумму задолженности по всем должникам.',
+            'Введите общую сумму требования по всем должникам в рублях.',
             reply_markup=CANCEL_KEYBOARD,
         )
         return
@@ -766,7 +766,7 @@ async def handle_shared_input_mode(update: Update, context: ContextTypes.DEFAULT
         context.user_data['mode'] = 'waiting_shared_total_debt_equal'
 
         await update.message.reply_text(
-            'Введите общую сумму задолженности по всем должникам.',
+            'Введите общую сумму требования по всем должникам в рублях.',
             reply_markup=CANCEL_KEYBOARD,
         )
         return
@@ -775,7 +775,7 @@ async def handle_shared_input_mode(update: Update, context: ContextTypes.DEFAULT
         context.user_data['mode'] = 'waiting_shared_total_debt_fraction'
 
         await update.message.reply_text(
-            'Введите общую сумму задолженности по всем должникам.',
+            'Введите общую сумму требования по всем должникам в рублях.',
             reply_markup=CANCEL_KEYBOARD,
         )
         return
@@ -783,7 +783,7 @@ async def handle_shared_input_mode(update: Update, context: ContextTypes.DEFAULT
     context.user_data['mode'] = 'waiting_shared_total_debt_exact'
 
     await update.message.reply_text(
-        'Введите общую сумму задолженности по всем должникам.',
+        'Введите общую сумму требования по всем должникам в рублях.',
         reply_markup=CANCEL_KEYBOARD,
     )
 
@@ -982,7 +982,7 @@ async def handle_shared_exact_amount(update: Update, context: ContextTypes.DEFAU
         context.user_data['current_exact_amount_index'] = 1
 
         await update.message.reply_text(
-            'Ошибка ввода. Сумма по должникам не равна общей сумме задолженности.\n'
+            'Ошибка ввода. Сумма по должникам не равна общей сумме требования.\n'
             'Давайте введём суммы заново.',
         )
         await ask_next_exact_amount(update, context)
@@ -1083,7 +1083,7 @@ async def handle_settlement_type_manual(update: Update, context: ContextTypes.DE
     text = update.message.text.strip()
 
     if text == '':
-        await update.message.reply_text('Ошибка ввода. Поле не должно быть пустым.')
+        await update.message.reply_text('Ошибка ввода. Введите тип населённого пункта.')
         return
 
     address_data = get_current_address_data(context)
@@ -1100,7 +1100,7 @@ async def handle_settlement_name(update: Update, context: ContextTypes.DEFAULT_T
     text = update.message.text.strip()
 
     if text == '':
-        await update.message.reply_text('Ошибка ввода. Поле не должно быть пустым.')
+        await update.message.reply_text('Ошибка ввода. Введите название населённого пункта.')
         return
 
     address_data = get_current_address_data(context)
@@ -1157,7 +1157,7 @@ async def handle_street_type_manual(update: Update, context: ContextTypes.DEFAUL
     text = update.message.text.strip()
 
     if text == '':
-        await update.message.reply_text('Ошибка ввода. Поле не должно быть пустым.')
+        await update.message.reply_text('Ошибка ввода. Введите тип улицы или объекта.')
         return
 
     address_data = get_current_address_data(context)
@@ -1174,7 +1174,7 @@ async def handle_street_name(update: Update, context: ContextTypes.DEFAULT_TYPE)
     text = update.message.text.strip()
 
     if text == '':
-        await update.message.reply_text('Ошибка ввода. Поле не должно быть пустым.')
+        await update.message.reply_text('Ошибка ввода. Введите название улицы или объекта.')
         return
 
     address_data = get_current_address_data(context)
@@ -1207,7 +1207,7 @@ async def handle_house(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     text = update.message.text.strip()
 
     if text == '':
-        await update.message.reply_text('Ошибка ввода. Поле не должно быть пустым.')
+        await update.message.reply_text('Ошибка ввода. Введите номер дома.')
         return
 
     address_data = get_current_address_data(context)
@@ -1279,7 +1279,7 @@ async def handle_completion_street_type_manual(update: Update, context: ContextT
     text = update.message.text.strip()
 
     if text == '':
-        await update.message.reply_text('Ошибка ввода. Поле не должно быть пустым.')
+        await update.message.reply_text('Ошибка ввода. Введите тип улицы или объекта.')
         return
 
     address_data = get_current_address_data(context)
@@ -1296,7 +1296,7 @@ async def handle_completion_street_name(update: Update, context: ContextTypes.DE
     text = update.message.text.strip()
 
     if text == '':
-        await update.message.reply_text('Ошибка ввода. Поле не должно быть пустым.')
+        await update.message.reply_text('Ошибка ввода. Введите название улицы или объекта.')
         return
 
     address_data = get_current_address_data(context)
@@ -1328,7 +1328,7 @@ async def handle_completion_house(update: Update, context: ContextTypes.DEFAULT_
     text = update.message.text.strip()
 
     if text == '':
-        await update.message.reply_text('Ошибка ввода. Поле не должно быть пустым.')
+        await update.message.reply_text('Ошибка ввода. Введите номер дома.')
         return
 
     address_data = get_current_address_data(context)
